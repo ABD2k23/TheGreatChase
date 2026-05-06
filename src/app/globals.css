@@ -1,0 +1,28 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-black: #2D2D2D;
+  --color-white: #F1ECE0;
+  --color-main: #D5C2A0;
+
+  --font-sans: var(--font-sat);
+}
+
+body {
+  background: #2D2D2D;
+  color: #F1ECE0;
+  font-family: var(--font-sans), Helvetica, sans-serif;
+}
+
+h1{
+  @apply tracking-[-0.02em] leading-none font-bold;
+  font-size: clamp(36px, 21px + 4.6875vw, 96px);
+}
+h2{
+  @apply tracking-[-0.02em] leading-none font-bold;
+  font-size: clamp(24px, 22px + 0.625vw, 32px);
+}
+h3,p{
+  @apply tracking-[0.01em] leading-[1.4] font-medium;
+  font-size: clamp(12px, 11px + 0.3125vw, 16px);
+}
