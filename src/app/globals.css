@@ -34,3 +34,7 @@ h5 {
   @apply font-sans tracking-[0.02em] leading-[1.1] font-medium;
   font-size: clamp(12px, 11px + 0.3125vw, 16px);
 }
+h6 {
+  @apply font-sans tracking-[0.02em] leading-[1.1] font-bold!;
+  font-size: clamp(14px, 12.5px + 0.4688vw, 20px);
+}

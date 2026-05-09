@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 
-const Click = ({
+const BigClick = ({
   content,
   fer,
   status,
@@ -12,12 +12,12 @@ const Click = ({
   status: boolean;
 }) => {
   const baseStyles =
-    "font-bold! cursor-pointer px-4 py-2 rounded-[16px]  transition-all duration-200 ease-out hover:-translate-y-0.5 hover:scale-[1.02] active:translate-y-0 active:scale-[0.99]";
+    "font-bold! cursor-pointer px-8 py-4 rounded-[32px]  transition-all duration-200 ease-out hover:-translate-y-1 hover:scale-[1.04] active:translate-y-0 active:scale-[0.99]";
 
   const activeStyles = "bg-black text-white border-black";
 
   const inactiveStyles =
-    "bg-transparent border border-black text-black hover:bg-black hover:text-white hover:border-black";
+    "bg-transparent border border-black text-black hover:bg-black hover:text-white";
 
   return (
     <div>
@@ -26,11 +26,11 @@ const Click = ({
           className={`${baseStyles} ${status ? activeStyles : inactiveStyles}`}
           style={{ ["cornerShape" as keyof React.CSSProperties]: "squircle" }}
         >
-          <h5 className="font-bold!">{content}</h5>
+          <h6>{content}</h6>
         </button>
       </Link>
     </div>
   );
 };
 
-export default Click;
+export default BigClick;
