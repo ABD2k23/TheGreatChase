@@ -27,7 +27,7 @@ h3 {
 }
 h4,
 p {
-  @apply font-sans tracking-[0.01em] leading-[1.4] font-medium;
+  @apply font-sans tracking-[0.01em] leading-[1.4] font-normal;
   font-size: clamp(12px, 11px + 0.3125vw, 16px);
 }
 h5 {

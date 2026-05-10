@@ -47,7 +47,7 @@ const Marquee = ({
   two,
   three,
   rotation = 2,
-  speed = 20,
+  speed = 32,
 }: MarqueeProps) => {
   const segmentRef = React.useRef<HTMLDivElement | null>(null);
   const x = useMotionValue(0);

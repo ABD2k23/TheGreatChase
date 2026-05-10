@@ -20,10 +20,12 @@ const Hero = () => {
       </div>
       <div className="flex w-1/2 h-full relative">
         <Image
-          src={"/heroo.png"}
+          src="/heroo.png"
           alt="Hero Image"
           fill
           priority
+          loading="eager"
+          sizes="50vw"
           className="object-cover"
         />
       </div>

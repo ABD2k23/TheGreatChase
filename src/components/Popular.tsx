@@ -48,7 +48,7 @@ const Menu = () => {
           { src: "/heroo.png", alt: "Halal dish" },
         ]}
       />
-      <div className="flex items-center justify-center gap-4 py-16">
+      <div className="flex items-center justify-center gap-4 py-16 pb-32">
         <BigClick content="View Full Menu" fer="/" status={true} />
         <BigClick content="Reservations" fer="/" status={false} />
       </div>
