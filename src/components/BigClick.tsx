@@ -1,6 +1,8 @@
-// /components/Click.tsx
+"use client";
 
+import { motion } from "framer-motion";
 import Link from "next/link";
+import type { CSSProperties } from "react";
 
 const BigClick = ({
   content,
@@ -12,7 +14,7 @@ const BigClick = ({
   status: boolean;
 }) => {
   const baseStyles =
-    "font-bold! cursor-pointer px-8 py-4 rounded-[32px]  transition-all duration-200 ease-out hover:-translate-y-1 hover:scale-[1.04] active:translate-y-0 active:scale-[0.99]";
+    "font-bold! inline-flex cursor-pointer px-8 py-4 rounded-[32px] select-none";
 
   const activeStyles = "bg-black text-white border-black";
 
@@ -20,16 +22,17 @@ const BigClick = ({
     "bg-transparent border border-black text-black hover:bg-black hover:text-white";
 
   return (
-    <div>
-      <Link href={fer}>
-        <button
-          className={`${baseStyles} ${status ? activeStyles : inactiveStyles}`}
-          style={{ ["cornerShape" as keyof React.CSSProperties]: "squircle" }}
-        >
-          <h6>{content}</h6>
-        </button>
-      </Link>
-    </div>
+    <Link href={fer} className="inline-block outline-none rounded-[inherit]">
+      <motion.span
+        className={`${baseStyles} ${status ? activeStyles : inactiveStyles}`}
+        style={{ ["cornerShape" as keyof CSSProperties]: "squircle" }}
+        whileHover={{ y: -4, scale: 1.04 }}
+        whileTap={{ y: 0, scale: 0.97 }}
+        transition={{ type: "spring", stiffness: 380, damping: 24 }}
+      >
+        <h6>{content}</h6>
+      </motion.span>
+    </Link>
   );
 };
 

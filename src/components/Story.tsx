@@ -1,17 +1,21 @@
 import Image from "next/image";
+import type { CSSProperties } from "react";
+import { Reveal } from "./motion/Reveal";
 
 const Story = () => {
   return (
     <div className="bg-[#ECE4D5] py-32 px-8  flex flex-col gap-16">
       <div className="flex items-start justify-start gap-16 w-full">
-        <h1 className="text-left w-1/2">
-          Our Great <br /> Story
-        </h1>
-        <div className="flex items-start justify-start gap-2 flex-col w-1/2">
+        <Reveal className="text-left w-1/2" amount={0.35}>
+          <h1 className="text-left w-full">
+            Our Great <br /> Story
+          </h1>
+        </Reveal>
+        <Reveal className="flex items-start justify-start gap-2 flex-col w-1/2" delay={0.08}>
           <p>
             At The Great Chase, we set out to prove that exceptional dining
-            doesn’t need alcohol to feel complete. Founded in London, our vision
-            was to create a refined space where great food and meaningful
+            doesn&apos;t need alcohol to feel complete. Founded in London, our
+            vision was to create a refined space where great food and meaningful
             experiences take center stage.
           </p>
           <p>
@@ -22,21 +26,24 @@ const Story = () => {
           </p>
           <p>
             More than just a restaurant, The Great Chase is a place where people
-            from all backgrounds feel welcome. It’s about inclusivity, shared
+            from all backgrounds feel welcome. It&apos;s about inclusivity, shared
             moments, and raising the standard for what halal dining can be.
           </p>
-        </div>
+        </Reveal>
       </div>
-      {/* Img */}
-      <div className="relative aspect-16/8 overflow-clip w-full">
+      <Reveal
+        delay={0.06}
+        className="relative aspect-16/8 overflow-hidden w-full"
+      >
         <Image
-          src={"/story.png"}
+          src="/story.png"
           alt=""
           fill
+          sizes="(max-width: 1024px) 100vw, 92vw"
           className="rounded-[32px] object-cover"
-          style={{ ["cornerShape" as keyof React.CSSProperties]: "squircle" }}
+          style={{ ["cornerShape" as keyof CSSProperties]: "squircle" }}
         />
-      </div>
+      </Reveal>
     </div>
   );
 };

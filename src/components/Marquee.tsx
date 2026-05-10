@@ -20,24 +20,18 @@ const ChipRow = ({
 }: Pick<MarqueeProps, "one" | "two" | "three">) => {
   return (
     <div className="flex items-center justify-center gap-4 shrink-0">
-      <div
-        className={chipClassName}
-        style={{ ["cornerShape" as keyof React.CSSProperties]: "squircle" }}
-      >
-        <h5>{one}</h5>
-      </div>
-      <div
-        className={chipClassName}
-        style={{ ["cornerShape" as keyof React.CSSProperties]: "squircle" }}
-      >
-        <h5>{two}</h5>
-      </div>
-      <div
-        className={chipClassName}
-        style={{ ["cornerShape" as keyof React.CSSProperties]: "squircle" }}
-      >
-        <h5>{three}</h5>
-      </div>
+      {[one, two, three].map((label) => (
+        <motion.div
+          key={label}
+          className={chipClassName}
+          style={{ ["cornerShape" as keyof React.CSSProperties]: "squircle" }}
+          whileHover={{ scale: 1.04, y: -2 }}
+          whileTap={{ scale: 0.98 }}
+          transition={{ type: "spring", stiffness: 420, damping: 26 }}
+        >
+          <h5>{label}</h5>
+        </motion.div>
+      ))}
     </div>
   );
 };

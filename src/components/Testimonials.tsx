@@ -1,24 +1,27 @@
 import Image from "next/image";
+import type { CSSProperties } from "react";
 import BigClick from "./BigClick";
+import { Reveal } from "./motion/Reveal";
 
 const Testimonials = () => {
   return (
     <div className="flex flex-col w-full py-32 bg-[#ECE4D5] px-8 gap-16">
-      <div className="flex items-center justify-center flex-col w-full gap-8">
+      <Reveal className="flex items-center justify-center flex-col w-full gap-8">
         <h1 className="text-center w-full max-w-[1024px]">
           Customers love dining at our restaurant.
         </h1>
         <p className="text-center">2000+ Google Reviews, Overall Rating 4.5</p>
-      </div>
+      </Reveal>
       <div className="w-full flex gap-8">
-        {/* 1ST */}
-        <div
+        <Reveal
           className="w-1/2 bg-white border border-black/32 rounded-[32px] p-8 flex items-start justify-start gap-4 flex-col"
-          style={{ ["cornerShape" as keyof React.CSSProperties]: "squircle" }}
+          style={{ ["cornerShape" as keyof CSSProperties]: "squircle" }}
+          delay={0.04}
+          amount={0.25}
         >
           <div className="flex items-center justify-center gap-4">
             <Image
-              src={"/heroo.png"}
+              src="/heroo.png"
               alt=""
               width={64}
               height={64}
@@ -42,15 +45,16 @@ const Testimonials = () => {
             roast as those are rare to come by, especially in a fully halal
             setting.
           </p>
-        </div>
-        {/* 2ND */}
-        <div
+        </Reveal>
+        <Reveal
           className="w-1/2 bg-white border border-black/32 p-8 flex items-start justify-start gap-4 flex-col rounded-[32px]"
-          style={{ ["cornerShape" as keyof React.CSSProperties]: "squircle" }}
+          style={{ ["cornerShape" as keyof CSSProperties]: "squircle" }}
+          delay={0.12}
+          amount={0.25}
         >
           <div className="flex items-center justify-center gap-4">
             <Image
-              src={"/heroo.png"}
+              src="/heroo.png"
               alt=""
               width={64}
               height={64}
@@ -73,15 +77,19 @@ const Testimonials = () => {
             would visit regularly. Still, it was a lovely experience for a
             special occasion.
           </p>
-        </div>
+        </Reveal>
       </div>
-      <div className="flex items-center justify-center w-full ">
+      <Reveal
+        className="flex items-center justify-center w-full "
+        delay={0.06}
+        amount={0.2}
+      >
         <BigClick
           content="Read More Reviews on Google"
           fer="/"
           status={false}
         />
-      </div>
+      </Reveal>
     </div>
   );
 };

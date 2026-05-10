@@ -1,11 +1,13 @@
-import React from "react";
 import Dish from "./Dish";
 import BigClick from "./BigClick";
+import { Reveal } from "./motion/Reveal";
 
 const Menu = () => {
   return (
     <div className="px-8">
-      <h1>Popular Dishes</h1>
+      <Reveal amount={0.35}>
+        <h1>Popular Dishes</h1>
+      </Reveal>
       <Dish
         title={
           <>
@@ -48,10 +50,14 @@ const Menu = () => {
           { src: "/heroo.png", alt: "Halal dish" },
         ]}
       />
-      <div className="flex items-center justify-center gap-4 py-16 pb-32">
+      <Reveal
+        className="flex items-center justify-center gap-4 py-16 pb-32"
+        delay={0.05}
+        amount={0.15}
+      >
         <BigClick content="View Full Menu" fer="/" status={true} />
         <BigClick content="Reservations" fer="/" status={false} />
-      </div>
+      </Reveal>
     </div>
   );
 };

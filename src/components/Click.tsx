@@ -1,6 +1,10 @@
 // /components/Click.tsx
 
+"use client";
+
+import { motion } from "framer-motion";
 import Link from "next/link";
+import type { CSSProperties } from "react";
 
 const Click = ({
   content,
@@ -12,7 +16,7 @@ const Click = ({
   status: boolean;
 }) => {
   const baseStyles =
-    "font-bold! cursor-pointer px-4 py-2 rounded-[16px]  transition-all duration-200 ease-out hover:-translate-y-0.5 hover:scale-[1.02] active:translate-y-0 active:scale-[0.99]";
+    "font-bold! inline-flex cursor-pointer px-4 py-2 rounded-[16px] select-none";
 
   const activeStyles = "bg-black text-white border-black";
 
@@ -20,16 +24,17 @@ const Click = ({
     "bg-transparent border border-black text-black hover:bg-black hover:text-white hover:border-black";
 
   return (
-    <div>
-      <Link href={fer}>
-        <button
-          className={`${baseStyles} ${status ? activeStyles : inactiveStyles}`}
-          style={{ ["cornerShape" as keyof React.CSSProperties]: "squircle" }}
-        >
-          <h5 className="font-bold!">{content}</h5>
-        </button>
-      </Link>
-    </div>
+    <Link href={fer} className="inline-block outline-none rounded-[inherit]">
+      <motion.span
+        className={`${baseStyles} ${status ? activeStyles : inactiveStyles}`}
+        style={{ ["cornerShape" as keyof CSSProperties]: "squircle" }}
+        whileHover={{ y: -2, scale: 1.025 }}
+        whileTap={{ y: 0, scale: 0.96 }}
+        transition={{ type: "spring", stiffness: 440, damping: 26 }}
+      >
+        <h5 className="font-bold!">{content}</h5>
+      </motion.span>
+    </Link>
   );
 };
 
