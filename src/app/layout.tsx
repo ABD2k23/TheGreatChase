@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { SmoothScroll } from "@/components/SmoothScroll";
+import Loader from "@/components/Loader";
 import "./globals.css";
 
 // Load variable font
@@ -27,7 +28,9 @@ export default function RootLayout({
       className={`${Sat.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <SmoothScroll>{children}</SmoothScroll>
+        <SmoothScroll>
+          <Loader minDurationMs={2000}>{children}</Loader>
+        </SmoothScroll>
       </body>
     </html>
   );

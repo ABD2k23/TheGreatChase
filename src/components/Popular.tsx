@@ -4,7 +4,7 @@ import { Reveal } from "./motion/Reveal";
 
 const Menu = () => {
   return (
-    <div className="px-8">
+    <div className="px-8 bg-main! text-black!">
       <Reveal amount={0.35}>
         <h1>Popular Dishes</h1>
       </Reveal>
