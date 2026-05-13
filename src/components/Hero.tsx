@@ -54,7 +54,7 @@ const Hero = () => {
             animate={reduce ? undefined : "visible"}
             custom={baseDelay + 0.14}
           >
-            <Click content="Explore Menu" fer="/" status={true} />
+            <Click content="Explore Menu" fer="/Menu" status={true} />
             <Click content="Reservations" fer="/" status={false} />
           </motion.div>
         </motion.div>

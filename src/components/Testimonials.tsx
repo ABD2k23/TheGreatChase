@@ -86,7 +86,8 @@ const Testimonials = () => {
       >
         <BigClick
           content="Read More Reviews on Google"
-          fer="/"
+          target="_blank"
+          fer="https://www.google.com/search?sca_esv=afd9099b0d2d3532&sxsrf=ANbL-n6V6rf7qLWCeF03TZ6HCVJAfGsrvA:1778649693495&si=AL3DRZEsmMGCryMMFSHJ3StBhOdZ2-6yYkXd_doETEE1OR-qOUmPprRHT6QLc5YQ7Za6mSYlrL2YQNqXvXpRw6wWv3n-j-iGwBZerExAbpRXu8G1ISDJvJ0W5cyC6I8ag3zcnJ7kICnY&q=The+Great+Chase+Reviews&sa=X&ved=2ahUKEwjvnKS5wrWUAxXSSEEAHZKxIY8Q0bkNegQIMhAI&biw=1536&bih=738&dpr=1.25"
           status={false}
         />
       </Reveal>

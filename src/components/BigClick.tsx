@@ -8,10 +8,12 @@ const BigClick = ({
   content,
   fer,
   status,
+  target = "_self",
 }: {
   content: string;
   fer: string;
   status: boolean;
+  target?: string;
 }) => {
   const baseStyles =
     "font-bold! inline-flex cursor-pointer px-8 py-4 rounded-[32px] select-none";
@@ -22,7 +24,11 @@ const BigClick = ({
     "bg-transparent border border-black text-black hover:bg-black hover:text-white";
 
   return (
-    <Link href={fer} className="inline-block outline-none rounded-[inherit]">
+    <Link
+      href={fer}
+      className="inline-block outline-none rounded-[inherit]"
+      target={target}
+    >
       <motion.span
         className={`${baseStyles} ${status ? activeStyles : inactiveStyles}`}
         style={{ ["cornerShape" as keyof CSSProperties]: "squircle" }}

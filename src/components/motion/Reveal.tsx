@@ -19,7 +19,7 @@ export function Reveal({
   delay = 0,
   amount = 0.2,
   margin = "0px 0px -10% 0px",
-  y = 28,
+  y = 16,
   ...rest
 }: RevealProps) {
   const reduce = useReducedMotion();
@@ -31,9 +31,9 @@ export function Reveal({
         reduce
           ? { opacity: 1, y: 0 }
           : {
-              opacity: 0,
+              opacity: 0.6,
               y,
-              filter: "blur(8px)",
+              filter: "blur(4px)",
             }
       }
       whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}

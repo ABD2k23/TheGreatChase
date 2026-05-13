@@ -156,7 +156,7 @@ const PopularSecond = () => {
         delay={0.05}
         amount={0.15}
       >
-        <BigClick content="View Full Menu" fer="/" status={true} />
+        <BigClick content="View Full Menu" fer="/Menu" status={true} />
         <BigClick content="Reservations" fer="/" status={false} />
       </Reveal>
     </div>
