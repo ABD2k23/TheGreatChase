@@ -21,7 +21,7 @@ const Hero = () => {
   return (
     <div className="w-full  h-dvh flex flex-col md:flex-row bg-main">
       <motion.div
-        className="bg-main flex w-full md:w-1/2 md:h-full p-4 md:p-8 flex-col justify-between items-start md:gap-0 gap-32 h-1/2"
+        className="bg-main flex w-full md:w-1/2 md:h-full p-4 md:p-8 flex-col justify-between items-start md:gap-0  h-1/2"
         initial={false}
       >
         <motion.h3
