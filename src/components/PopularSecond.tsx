@@ -172,7 +172,7 @@ const PopularSecond = () => {
       {/* Menu */}
 
       <Reveal
-        className="flex flex-col sm:flex-row items-center justify-center gap-4 py-8 md:py-16 px-4 md:px-8 pb-16 md:pb-32 bg-[#ECE4D5]"
+        className="flex flex-row items-center justify-center gap-4 py-8 md:py-16 px-4 md:px-8 pb-16 md:pb-32 bg-[#ECE4D5]"
         delay={0.05}
         amount={0.15}
       >

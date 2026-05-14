@@ -3,7 +3,7 @@ import { Reveal } from "./motion/Reveal";
 
 const Info = () => {
   return (
-    <div className="py-16 md:py-40 overflow-clip bg-white px-4 md:px-0">
+    <div className="py-32 overflow-clip bg-white px-4 md:px-0">
       <Reveal className="flex gap-4 flex-col w-full items-end ">
         <h2 className="w-full md:w-1/2 md:pr-8">Made For Everyone</h2>
         <h3 className="w-full md:w-1/2 md:pr-8">

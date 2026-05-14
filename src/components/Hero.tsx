@@ -19,9 +19,9 @@ const Hero = () => {
   const baseDelay = reduce ? 0 : 2.05;
 
   return (
-    <div className="w-full h-auto md:h-dvh flex flex-col md:flex-row bg-main">
+    <div className="w-full  h-dvh flex flex-col md:flex-row bg-main">
       <motion.div
-        className="bg-main flex w-full md:w-1/2 h-auto md:h-full p-6 md:p-8 flex-col justify-between items-start"
+        className="bg-main flex w-full md:w-1/2 md:h-full p-4 md:p-8 flex-col justify-between items-start md:gap-0 gap-32 h-1/2"
         initial={false}
       >
         <motion.h3
@@ -48,7 +48,7 @@ const Hero = () => {
             London.
           </motion.h3>
           <motion.div
-            className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto"
+            className="flex gap-4 w-full sm:w-auto"
             variants={reduce ? undefined : item}
             initial={reduce ? false : "hidden"}
             animate={reduce ? undefined : "visible"}
@@ -60,7 +60,7 @@ const Hero = () => {
         </motion.div>
       </motion.div>
       <motion.div
-        className="flex w-full md:w-1/2 h-64 md:h-full relative overflow-hidden bg-main"
+        className="flex w-full md:w-1/2 h-1/2 md:h-full relative overflow-hidden bg-main"
         initial={reduce ? undefined : { opacity: 0 }}
         animate={reduce ? undefined : { opacity: 1 }}
         transition={{

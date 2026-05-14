@@ -9,15 +9,15 @@ const linkSpring = { type: "spring" as const, stiffness: 400, damping: 28 };
 export default function Footer() {
   return (
     <div>
-      <div className="h-48 md:h-64 relative -translate-y-8 overflow-hidden">
+      <div className="h-128 lg:h-64 relative -translate-y-8 overflow-hidden">
         <Image
           src="/bg.png"
-          alt=""
+          alt="Background image"
           fill
           sizes="100vw"
           className="object-cover"
         />
-        <div className="absolute z-10 w-full h-full flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 md:gap-32 px-4 md:px-8 pointer-events-none">
+        <div className="absolute z-10 w-full h-full flex flex-col md:flex-row items-start lg:items-center justify-center gap-8 md:gap-32 px-4 md:px-8 pointer-events-none">
           <div className="pointer-events-auto flex items-start justify-center gap-2 flex-col">
             <h6 className="font-bold! text-sm md:text-base">Navigate To</h6>
             <div className="flex items-center justify-center gap-3 md:gap-4">

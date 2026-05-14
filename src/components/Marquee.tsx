@@ -110,7 +110,7 @@ const Marquee = ({
 
   return (
     <div
-      className="w-full overflow-hidden py-16 md:py-32"
+      className="w-full overflow-hidden py-32 md:16 md:py-32"
       style={{ transform: `rotate(${mobileRotation}deg)` }}
     >
       <motion.div className="flex will-change-transform" style={{ x }}>
