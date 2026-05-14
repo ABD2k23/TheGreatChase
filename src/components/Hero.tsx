@@ -19,9 +19,9 @@ const Hero = () => {
   const baseDelay = reduce ? 0 : 2.05;
 
   return (
-    <div className="w-full h-dvh flex bg-main">
+    <div className="w-full h-auto md:h-dvh flex flex-col md:flex-row bg-main">
       <motion.div
-        className="bg-main flex w-1/2 h-full p-8 flex-col justify-between items-start"
+        className="bg-main flex w-full md:w-1/2 h-auto md:h-full p-6 md:p-8 flex-col justify-between items-start"
         initial={false}
       >
         <motion.h3
@@ -34,7 +34,7 @@ const Hero = () => {
           The Great Chase
         </motion.h3>
         <motion.div
-          className="flex items-start justify-end gap-[32px] w-full max-w-[564px] flex-col"
+          className="flex items-start justify-end gap-[32px] w-full max-w-[564px] flex-col py-4 md:py-0"
           initial={false}
         >
           <motion.h3
@@ -48,7 +48,7 @@ const Hero = () => {
             London.
           </motion.h3>
           <motion.div
-            className="flex gap-4"
+            className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto"
             variants={reduce ? undefined : item}
             initial={reduce ? false : "hidden"}
             animate={reduce ? undefined : "visible"}
@@ -60,7 +60,7 @@ const Hero = () => {
         </motion.div>
       </motion.div>
       <motion.div
-        className="flex w-1/2 h-full relative overflow-hidden bg-main"
+        className="flex w-full md:w-1/2 h-64 md:h-full relative overflow-hidden bg-main"
         initial={reduce ? undefined : { opacity: 0 }}
         animate={reduce ? undefined : { opacity: 1 }}
         transition={{
@@ -75,7 +75,7 @@ const Hero = () => {
           fill
           priority
           loading="eager"
-          sizes="50vw"
+          sizes="(max-width: 768px) 100vw, 50vw"
           className="object-cover"
         />
       </motion.div>

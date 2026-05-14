@@ -41,3 +41,52 @@ h6 {
   @apply font-sans tracking-[0.02em] leading-[1.1] font-bold!;
   font-size: clamp(14px, 12.5px + 0.4688vw, 20px);
 }
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+  /* Ensure minimum touch target size of 44x44px for interactive elements */
+  button,
+  a,
+  [role="button"] {
+    @apply min-h-11 min-w-11;
+  }
+
+  /* Improve spacing on touch devices */
+  input,
+  textarea,
+  select {
+    @apply min-h-12;
+  }
+}
+
+/* Mobile-first responsive utilities */
+@media (max-width: 640px) {
+  html {
+    font-size: 14px;
+  }
+
+  body {
+    overflow-x: hidden;
+  }
+}
+
+/* Smooth scrolling for better mobile experience */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Prevent layout shift on scroll */
+html {
+  overflow-y: scroll;
+}
+
+/* Ensure images are responsive */
+img {
+  @apply max-w-full h-auto;
+}
+
+/* Ensure videos are responsive */
+iframe,
+video {
+  @apply max-w-full;
+}

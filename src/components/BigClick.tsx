@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import type { CSSProperties } from "react";
+import { useEffect, useState } from "react";
 
 const BigClick = ({
   content,
@@ -15,8 +16,23 @@ const BigClick = ({
   status: boolean;
   target?: string;
 }) => {
+  const [isHoverSupported, setIsHoverSupported] = useState(true);
+
+  useEffect(() => {
+    // Check if device supports hover (not a touch device)
+    const mediaQuery = window.matchMedia("(hover: hover)");
+    setIsHoverSupported(mediaQuery.matches);
+
+    const handleChange = (e: MediaQueryListEvent) => {
+      setIsHoverSupported(e.matches);
+    };
+
+    mediaQuery.addEventListener("change", handleChange);
+    return () => mediaQuery.removeEventListener("change", handleChange);
+  }, []);
+
   const baseStyles =
-    "font-bold! inline-flex cursor-pointer px-8 py-4 rounded-[32px] select-none";
+    "font-bold! inline-flex cursor-pointer px-6 md:px-8 py-3 md:py-4 rounded-[32px] select-none transition-all";
 
   const activeStyles = "bg-black text-white border-black";
 
@@ -32,11 +48,11 @@ const BigClick = ({
       <motion.span
         className={`${baseStyles} ${status ? activeStyles : inactiveStyles}`}
         style={{ ["cornerShape" as keyof CSSProperties]: "squircle" }}
-        whileHover={{ y: -4, scale: 1.04 }}
+        whileHover={isHoverSupported ? { y: -4, scale: 1.04 } : {}}
         whileTap={{ y: 0, scale: 0.97 }}
         transition={{ type: "spring", stiffness: 380, damping: 24 }}
       >
-        <h6>{content}</h6>
+        <h6 className="text-sm md:text-base">{content}</h6>
       </motion.span>
     </Link>
   );

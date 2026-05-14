@@ -18,14 +18,29 @@ const ChipRow = ({
   two,
   three,
 }: Pick<MarqueeProps, "one" | "two" | "three">) => {
+  const [isHoverSupported, setIsHoverSupported] = React.useState(true);
+
+  React.useEffect(() => {
+    // Check if device supports hover (not a touch device)
+    const mediaQuery = window.matchMedia("(hover: hover)");
+    setIsHoverSupported(mediaQuery.matches);
+
+    const handleChange = (e: MediaQueryListEvent) => {
+      setIsHoverSupported(e.matches);
+    };
+
+    mediaQuery.addEventListener("change", handleChange);
+    return () => mediaQuery.removeEventListener("change", handleChange);
+  }, []);
+
   return (
-    <div className="flex items-center justify-center gap-4 shrink-0">
+    <div className="flex items-center justify-center gap-2 md:gap-4 shrink-0">
       {[one, two, three].map((label) => (
         <motion.div
           key={label}
-          className={chipClassName}
+          className={`${chipClassName} text-xs md:text-base`}
           style={{ ["cornerShape" as keyof React.CSSProperties]: "squircle" }}
-          whileHover={{ scale: 1.04, y: -2 }}
+          whileHover={isHoverSupported ? { scale: 1.04, y: -2 } : {}}
           whileTap={{ scale: 0.98 }}
           transition={{ type: "spring", stiffness: 420, damping: 26 }}
         >
@@ -46,6 +61,16 @@ const Marquee = ({
   const segmentRef = React.useRef<HTMLDivElement | null>(null);
   const x = useMotionValue(0);
   const [segmentWidth, setSegmentWidth] = React.useState(0);
+  const [isMobile, setIsMobile] = React.useState(false);
+
+  React.useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   React.useLayoutEffect(() => {
     const el = segmentRef.current;
@@ -80,14 +105,17 @@ const Marquee = ({
     return () => controls.stop();
   }, [rotation, segmentWidth, speed, x]);
 
+  // Reduce rotation on mobile for better readability
+  const mobileRotation = isMobile ? 0 : rotation;
+
   return (
     <div
-      className="w-full overflow-hidden py-32"
-      style={{ transform: `rotate(${rotation}deg)` }}
+      className="w-full overflow-hidden py-16 md:py-32"
+      style={{ transform: `rotate(${mobileRotation}deg)` }}
     >
       <motion.div className="flex will-change-transform" style={{ x }}>
         {/* Segment A (measured) */}
-        <div ref={segmentRef} className="flex gap-4 shrink-0">
+        <div ref={segmentRef} className="flex gap-2 md:gap-4 shrink-0">
           <ChipRow one={one} two={two} three={three} />
           <ChipRow one={one} two={two} three={three} />
           <ChipRow one={one} two={two} three={three} />
@@ -96,7 +124,7 @@ const Marquee = ({
         </div>
 
         {/* Segment B (duplicate) */}
-        <div aria-hidden className="flex gap-4 shrink-0">
+        <div aria-hidden className="flex gap-2 md:gap-4 shrink-0">
           <ChipRow one={one} two={two} three={three} />
           <ChipRow one={one} two={two} three={three} />
           <ChipRow one={one} two={two} three={three} />

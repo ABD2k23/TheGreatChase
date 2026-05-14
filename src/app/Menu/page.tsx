@@ -265,36 +265,36 @@ const PopularSecond = () => {
 
   const Nav = (
     <>
-      <div className="flex items-center justify-between px-8 py-4 fixed top-0 left-0 w-full z-10">
+      <div className="flex items-center justify-between px-4 md:px-8 py-3 md:py-4 fixed top-0 left-0 w-full z-10 gap-2 bg-white border-b border-black/10">
         <Link
           href="/"
           className="opacity-70 hover:opacity-100 transition-opacity"
         >
-          <h5>← Back To Home</h5>
+          <h5 className="text-xs md:text-base">← Back</h5>
         </Link>
-        <h6 className="font-medium!  tracking-[-0.02em]! leading-[1.1]! ">
+        <h6 className="font-medium! tracking-[-0.02em]! leading-[1.1]! text-xs md:text-base">
           The Great Chase
         </h6>
-        <Click content="Reservation" fer="/booking" status={true} />
+        <Click content="Reserv" fer="/booking" status={true} />
       </div>
     </>
   );
   const Footer = (
     <>
       <div
-        className="flex items-center justify-between  border border-black/32 p-4 fixed bottom-0 left-1/2 -translate-x-1/2 z-10 rounded-t-4xl gap-4"
+        className="flex flex-col sm:flex-row items-center justify-between border border-black/32 p-2 md:p-4 fixed bottom-0 left-1/2 -translate-x-1/2 z-10 rounded-t-3xl md:rounded-t-4xl gap-2 md:gap-4 bg-white w-[calc(100%-16px)] sm:w-auto"
         style={{ ["cornerShape" as keyof CSSProperties]: "squircle" }}
       >
         {/* Counter */}
-        <h5 className="font-bold! text-nowrap">
+        <h5 className="font-bold! text-nowrap text-xs md:text-base">
           {String(currentIndex + 1).padStart(2, "0")}/{filteredDishes.length}
         </h5>
         {/* Menu Division */}
-        <div className="flex items-center justify-center gap-4 flex-nowrap">
+        <div className="flex items-center justify-center gap-1 md:gap-4 flex-nowrap overflow-x-auto max-w-[calc(100vw-32px)]">
           {categories.map((category) => {
             const isActive = selectedCategory === category;
             const baseClasses =
-              "px-4 py-2 rounded-2xl cursor-pointer w-fit text-nowrap border transition-all";
+              "px-2 md:px-4 py-1 md:py-2 rounded-xl md:rounded-2xl cursor-pointer w-fit text-nowrap border transition-all text-xs md:text-base";
             const activeClasses =
               isActive && category !== "Specials"
                 ? "bg-black text-white border-black"
@@ -319,10 +319,12 @@ const PopularSecond = () => {
                 className={`${baseClasses} ${activeClasses}`}
                 style={{ ["cornerShape" as keyof CSSProperties]: "squircle" }}
               >
-                <h5 className="font-bold!">
+                <h5 className="font-bold! text-xs md:text-base">
                   {category === "Signature Roasts"
-                    ? "Signature Roasts"
-                    : category}
+                    ? "Sig. Roasts"
+                    : category === "Main Courses"
+                      ? "Mains"
+                      : category}
                 </h5>
               </button>
             );
@@ -332,7 +334,7 @@ const PopularSecond = () => {
     </>
   );
   return (
-    <div className=" text-black!">
+    <div className="text-black!">
       {/* Menu */}
       <div
         ref={sectionRef}
@@ -340,10 +342,10 @@ const PopularSecond = () => {
         style={{ height: `${Math.max(1, filteredDishes.length) * 100}vh` }}
       >
         {Nav}
-        <div className="sticky top-0 h-dvh flex items-center px-6 sm:px-8">
-          <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+        <div className="sticky top-0 h-dvh flex items-center px-4 sm:px-6 md:px-8 pt-16 md:pt-20">
+          <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8 items-center">
             {/* Name */}
-            <div className="min-w-0">
+            <div className="min-w-0 order-2 md:order-1">
               <AnimatePresence mode="wait">
                 <motion.h3
                   key={activeDish.name}
@@ -351,23 +353,23 @@ const PopularSecond = () => {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-                  className="leading-tight text-2xl sm:text-3xl md:text-4xl"
+                  className="leading-tight text-lg sm:text-2xl md:text-4xl"
                 >
                   {activeDish.name}
                 </motion.h3>
               </AnimatePresence>
 
-              <div className="mt-4 text-sm opacity-70">
+              <div className="mt-2 md:mt-4 text-xs md:text-sm opacity-70 max-h-[200px] md:max-h-none overflow-y-auto md:overflow-y-visible">
                 {filteredDishes.map((d, i) => (
                   <motion.button
                     key={d.name}
                     type="button"
                     onClick={() => scrollToDish(i)}
-                    className="flex items-center gap-2 w-full text-left"
+                    className="flex items-center gap-2 w-full text-left py-1 hover:opacity-100 transition-opacity"
                     animate={{ opacity: i === currentIndex ? 1 : 0.35 }}
                     transition={{ duration: 0.25 }}
                   >
-                    <span className="inline-block w-4 tabular-nums">
+                    <span className="inline-block w-4 tabular-nums flex-shrink-0">
                       {String(i + 1).padStart(2, "0")}
                     </span>
                     <span className="truncate">{d.name}</span>
@@ -377,9 +379,9 @@ const PopularSecond = () => {
             </div>
 
             {/* Image */}
-            <div className="relative flex justify-center">
+            <div className="relative flex justify-center order-1 md:order-2 mb-4 md:mb-0">
               <div
-                className="relative overflow-clip rounded-2xl w-[min(280px,80vw)] h-[min(480px,55vh)]"
+                className="relative overflow-clip rounded-[12px] md:rounded-2xl w-[min(220px,70vw)] md:w-[min(280px,80vw)] h-[min(320px,50vh)] md:h-[min(480px,55vh)]"
                 style={{ ["cornerShape" as keyof CSSProperties]: "squircle" }}
               >
                 <AnimatePresence mode="wait">
@@ -403,7 +405,7 @@ const PopularSecond = () => {
             </div>
 
             {/* Price */}
-            <div className="md:text-right">
+            <div className="md:text-right order-3">
               <AnimatePresence mode="wait">
                 <motion.h3
                   key={activeDish.price}
@@ -411,7 +413,7 @@ const PopularSecond = () => {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-                  className="leading-tight text-2xl sm:text-3xl md:text-4xl tabular-nums"
+                  className="leading-tight text-lg sm:text-2xl md:text-4xl tabular-nums"
                 >
                   {activeDish.price}
                 </motion.h3>
