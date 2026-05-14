@@ -211,7 +211,7 @@ const PopularSecond = () => {
         category: "Sauces",
       },
       {
-        name: "Limited availability — please ask your server",
+        name: "Limited availability - please ask your server",
         price: "£00",
         imageSrc: "/Specials.png",
         imageAlt: "Specials",
@@ -250,6 +250,19 @@ const PopularSecond = () => {
   );
   const activeDish =
     filteredDishes[currentIndex] ?? filteredDishes[0] ?? dishes[0];
+
+  const scrollToDish = (index: number) => {
+    if (!sectionRef.current) return;
+
+    const sectionTop = sectionRef.current.offsetTop;
+    window.scrollTo({
+      top: sectionTop + index * window.innerHeight,
+      behavior: "smooth",
+    });
+
+    setActiveIndex(index);
+  };
+
   const Nav = (
     <>
       <div className="flex items-center justify-between px-8 py-4 fixed top-0 left-0 w-full z-10">
@@ -346,9 +359,11 @@ const PopularSecond = () => {
 
               <div className="mt-4 text-sm opacity-70">
                 {filteredDishes.map((d, i) => (
-                  <motion.div
+                  <motion.button
                     key={d.name}
-                    className="flex items-center gap-2"
+                    type="button"
+                    onClick={() => scrollToDish(i)}
+                    className="flex items-center gap-2 w-full text-left"
                     animate={{ opacity: i === currentIndex ? 1 : 0.35 }}
                     transition={{ duration: 0.25 }}
                   >
@@ -356,7 +371,7 @@ const PopularSecond = () => {
                       {String(i + 1).padStart(2, "0")}
                     </span>
                     <span className="truncate">{d.name}</span>
-                  </motion.div>
+                  </motion.button>
                 ))}
               </div>
             </div>
