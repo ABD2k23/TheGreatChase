@@ -282,7 +282,7 @@ const PopularSecond = () => {
   const Footer = (
     <>
       <div
-        className="flex flex-col sm:flex-row items-center justify-between border border-black/32 p-2 md:p-4 fixed bottom-0 left-1/2 -translate-x-1/2 z-10 rounded-t-3xl md:rounded-t-4xl gap-2 md:gap-4 bg-white w-[calc(100%-16px)] sm:w-auto"
+        className="flex flex-col sm:flex-row items-center justify-between border border-black/32 p-2 md:p-4 fixed bottom-0 left-1/2 -translate-x-1/2 z-10 rounded-t-3xl md:rounded-t-4xl gap-2 md:gap-4 bg-white w-[calc(100%-16px)] w-auto"
         style={{ ["cornerShape" as keyof CSSProperties]: "squircle" }}
       >
         {/* Counter */}
@@ -291,7 +291,7 @@ const PopularSecond = () => {
         </h5>
         {/* Menu Division */}
         <div
-          className="flex items-center justify-center gap-1 md:gap-4 flex-nowrap overflow-x-auto max-w-[calc(100vw-32px)]"
+          className="flex items-start sm:items-center justify-start gap-1 md:gap-4 flex-nowrap overflow-x-auto max-w-[calc(100vw-32px)]"
           style={{
             scrollbarWidth: "none",
             msOverflowStyle: "none",
@@ -348,7 +348,7 @@ const PopularSecond = () => {
         style={{ height: `${Math.max(1, filteredDishes.length) * 100}vh` }}
       >
         {Nav}
-        <div className="sticky top-0 h-dvh flex items-center px-4 sm:px-6 md:px-8 pt-16 md:pt-20">
+        <div className="sticky top-0 h-dvh flex items-start px-4 sm:px-6 md:px-8 pt-16 md:pt-20">
           <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8 items-center">
             {/* Name */}
             <div className="min-w-0 order-2 md:order-1">
