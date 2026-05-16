@@ -82,9 +82,9 @@ const PopularSecond = () => {
 
   return (
     <div className="text-black!">
-      <Reveal amount={0.35} className="bg-white">
-        <h1 className="px-4 md:px-8 pb-8 md:pb-16">Popular Dishes</h1>
-      </Reveal>
+      {/* <Reveal amount={0.35} className="bg-white"> */}
+      <h1 className="px-4 md:px-8 pb-8 md:pb-16">Popular Dishes</h1>
+      {/* </Reveal> */}
       {/* Menu */}
       <div
         ref={sectionRef}
