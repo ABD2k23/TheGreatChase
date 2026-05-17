@@ -265,10 +265,10 @@ const PopularSecond = () => {
 
   const Nav = (
     <>
-      <div className="flex items-center justify-between px-4 md:px-8 py-4 fixed top-0 left-0 w-full z-10 gap-2 bg-white border-b border-black/10">
+      <div className="flex items-center justify-between px-4 md:px-8 py-4 fixed top-0 left-0 w-full z-10 bg-white border-b border-black/10">
         <Link
           href="/"
-          className="opacity-70 hover:opacity-100 transition-opacity"
+          className="opacity-70 hover:opacity-100 transition-opacity relative flex items-center justify-center h-fit"
         >
           <h5>← Back</h5>
         </Link>
@@ -300,7 +300,7 @@ const PopularSecond = () => {
           {categories.map((category) => {
             const isActive = selectedCategory === category;
             const baseClasses =
-              "px-2 md:px-4 py-1 md:py-2 rounded-xl md:rounded-2xl cursor-pointer w-fit text-nowrap border transition-all text-xs md:text-base";
+              "px-2 md:px-4 py-1 md:py-2 rounded-xl md:rounded-2xl cursor-pointer w-fit text-nowrap border transition-all";
             const activeClasses =
               isActive && category !== "Specials"
                 ? "bg-black text-white border-black"
@@ -311,9 +311,8 @@ const PopularSecond = () => {
                     : "bg-white text-black border-black";
 
             return (
-              <button
+              <div
                 key={category}
-                type="button"
                 onClick={() => {
                   setSelectedCategory(category);
                   setActiveIndex(0);
@@ -322,17 +321,17 @@ const PopularSecond = () => {
                     block: "start",
                   });
                 }}
-                className={`${baseClasses} ${activeClasses}`}
+                className={`w-fit ${baseClasses} ${activeClasses}`}
                 style={{ ["cornerShape" as keyof CSSProperties]: "squircle" }}
               >
-                <h5 className="font-bold! text-xs md:text-base">
+                <h5 className="font-bold! w-fit">
                   {category === "Signature Roasts"
                     ? "Signature Roasts"
                     : category === "Main Courses"
                       ? "Mains"
                       : category}
                 </h5>
-              </button>
+              </div>
             );
           })}
         </div>
@@ -365,13 +364,13 @@ const PopularSecond = () => {
                 </motion.h3>
               </AnimatePresence>
 
-              <div className="mt-2 md:mt-4 text-xs md:text-sm opacity-70 max-h-[200px] md:max-h-none overflow-y-auto md:overflow-y-visible">
+              <div className="mt-2 md:mt-4 opacity-70 block md:overflow-y-visible flex items-start justify-start gap-1 flex-col">
                 {filteredDishes.map((d, i) => (
-                  <motion.button
+                  <motion.div
                     key={d.name}
-                    type="button"
+                    // type="button"
                     onClick={() => scrollToDish(i)}
-                    className="flex items-center gap-2 w-full text-left py-1 hover:opacity-100 transition-opacity"
+                    className="flex items-start justify-start gap-2 w-full text-left py-1 hover:opacity-100 transition-opacity"
                     animate={{ opacity: i === currentIndex ? 1 : 0.35 }}
                     transition={{ duration: 0.25 }}
                   >
@@ -379,7 +378,7 @@ const PopularSecond = () => {
                       {String(i + 1).padStart(2, "0")}
                     </span>
                     <span className="truncate">{d.name}</span>
-                  </motion.button>
+                  </motion.div>
                 ))}
               </div>
             </div>

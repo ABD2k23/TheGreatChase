@@ -42,22 +42,22 @@ h6 {
   font-size: clamp(14px, 12.5px + 0.4688vw, 20px);
 }
 
-/* Touch device optimizations */
+/* Touch device optimizations
 @media (hover: none) and (pointer: coarse) {
-  /* Ensure minimum touch target size of 44x44px for interactive elements */
+  Ensure minimum touch target size of 44x44px for interactive elements
   button,
   a,
   [role="button"] {
-    @apply min-h-11 min-w-11;
+    @apply  min-w-11;
   }
 
-  /* Improve spacing on touch devices */
+  Improve spacing on touch devices
   input,
   textarea,
   select {
     @apply min-h-12;
   }
-}
+} */
 
 /* Mobile-first responsive utilities
 @media (max-width: 640px) {
