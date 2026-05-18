@@ -16,7 +16,7 @@ const Info = () => {
         two="top-Tier Dining Destination"
         three="For Everyone"
       />
-      <Reveal className="flex gap-4 flex-col w-full items-start " delay={0.04}>
+      <Reveal className="flex gap-4 flex-col w-full items-start ">
         <h2 className="w-full md:w-1/2 md:pl-8">New Location</h2>
         <h3 className="w-full md:w-1/2 md:pl-8">
           6G Esther Anne Place, Islington Square, London N1 1WL
@@ -29,7 +29,7 @@ const Info = () => {
         three="Ethical Sourcing"
         rotation={-2}
       />
-      <Reveal className="flex gap-4 flex-col w-full items-end " delay={0.06}>
+      <Reveal className="flex gap-4 flex-col w-full items-end ">
         <h2 className="w-full md:w-1/2 md:pr-8">Opening Hours</h2>
         <h3 className="w-full md:w-1/2 md:pr-8">
           Closed on Mondays <br />

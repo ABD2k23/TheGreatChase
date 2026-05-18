@@ -20,9 +20,10 @@ const Footer = () => {
   const Instagram = (
     <>
       <svg
-        width="24"
-        height="24"
+        width="100%"
+        height="100%"
         viewBox="0 0 24 24"
+        className="w-1/2 h-1/2 md:w-3/4 md:h-3/4"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
@@ -36,9 +37,10 @@ const Footer = () => {
   const TelePhone = (
     <>
       <svg
-        width="26"
-        height="24"
+        width="100%"
+        height="100%"
         viewBox="0 0 26 24"
+        className="w-1/2 h-1/2 md:w-3/4 md:h-3/4"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
@@ -62,9 +64,10 @@ const Footer = () => {
   const BackToTop = (
     <>
       <svg
-        width="15"
-        height="17"
+        width="100%"
+        height="100%"
         viewBox="0 0 15 17"
+        className="w-1/2 h-1/2 md:w-3/4 md:h-3/4"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
@@ -147,7 +150,7 @@ const Footer = () => {
         <Link
           target="_blank"
           href="https://www.instagram.com/thegreatchaserestaurant?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
-          className="w-12 min-h-12 rounded-2xl bg-main flex items-center justify-center"
+          className="w-10 sm:w-12 p-2 aspect-square rounded-2xl bg-main flex items-center justify-center"
           style={{ ["cornerShape" as keyof CSSProperties]: "squircle" }}
         >
           {Instagram}
@@ -155,7 +158,7 @@ const Footer = () => {
         <button
           type="button"
           onClick={handleTelephoneCopy}
-          className="w-12 min-h-12 rounded-2xl bg-main flex items-center justify-center relative cursor-pointer"
+          className="w-10 sm:w-12 p-2 aspect-square rounded-2xl bg-main flex items-center justify-center relative cursor-pointer"
           style={{ ["cornerShape" as keyof CSSProperties]: "squircle" }}
         >
           {TelePhone}
@@ -167,7 +170,7 @@ const Footer = () => {
         </button>
         <a
           href="#"
-          className="w-12 min-h-12 rounded-2xl bg-main flex items-center justify-center"
+          className="w-10 sm:w-12 p-2 aspect-square rounded-2xl bg-main flex items-center justify-center"
           style={{ ["cornerShape" as keyof CSSProperties]: "squircle" }}
         >
           {BackToTop}

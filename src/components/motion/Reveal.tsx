@@ -1,50 +1,49 @@
 "use client";
 
-import { motion, type HTMLMotionProps, useReducedMotion } from "framer-motion";
+import {
+  motion,
+  type HTMLMotionProps,
+  useScroll,
+  useTransform,
+  type MotionStyle,
+} from "framer-motion";
+import { type ReactNode, useRef } from "react";
 
 const eased = [0.25, 0.46, 0.45, 0.94] as const;
 
 type RevealProps = {
-  children: React.ReactNode;
+  children: ReactNode;
   className?: string;
-  delay?: number;
-  amount?: number;
-  margin?: string;
-  y?: number;
-} & Omit<HTMLMotionProps<"div">, "children" | "initial" | "whileInView">;
+  parallaxStart?: number;
+  parallaxEnd?: number;
+} & Omit<HTMLMotionProps<"div">, "children">;
 
 export function Reveal({
   children,
   className,
-  delay = 0,
-  amount = 0.2,
-  margin = "0px 0px -10% 0px",
-  y = 16,
+  parallaxStart = -10,
+  parallaxEnd = 10,
   ...rest
 }: RevealProps) {
-  const reduce = useReducedMotion();
+  const ref = useRef<HTMLDivElement | null>(null);
+
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"],
+  });
+
+  const yMotion = useTransform(
+    scrollYProgress,
+    [0, 1],
+    [parallaxStart, parallaxEnd],
+  );
+
+  const motionStyle: MotionStyle = {
+    y: yMotion,
+  };
 
   return (
-    <motion.div
-      className={className}
-      initial={
-        reduce
-          ? { opacity: 1, y: 0 }
-          : {
-              opacity: 0.6,
-              y,
-              filter: "blur(4px)",
-            }
-      }
-      whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-      viewport={{ once: true, amount, margin }}
-      transition={{
-        duration: reduce ? 0 : 0.62,
-        delay: reduce ? 0 : delay,
-        ease: eased,
-      }}
-      {...rest}
-    >
+    <motion.div ref={ref} className={className} {...rest} style={motionStyle}>
       {children}
     </motion.div>
   );
