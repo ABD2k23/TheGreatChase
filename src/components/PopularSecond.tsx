@@ -8,6 +8,8 @@ import {
   motion,
   useMotionValueEvent,
   useScroll,
+  useTransform,
+  useSpring,
 } from "framer-motion";
 import {
   useMemo,
@@ -16,6 +18,7 @@ import {
   useEffect,
   type CSSProperties,
 } from "react";
+import Click from "./Click";
 
 type Dish = {
   name: string;
@@ -56,6 +59,13 @@ const PopularSecond = () => {
     offset: ["start start", "end end"],
   });
 
+  // Map scroll progress to a scale value for the H1.
+  // Start shrinking a little earlier so the title reduces size sooner.
+  const scale = useTransform(scrollYProgress, [0, 0.1], [1, 0.36]);
+
+  // Smooth the scale motion value with a spring for nicer easing
+  const springScale = useSpring(scale, { stiffness: 120, damping: 20 });
+
   const [activeIndex, setActiveIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
 
@@ -92,9 +102,12 @@ const PopularSecond = () => {
         style={{ height: `${scrollHeight}vh` }}
       >
         <div className="sticky top-0 h-dvh flex items-center px-4 sm:px-6 md:px-8">
-          <h3 className="absolute top-8 left-0 w-full text-center px-4 ">
+          <motion.h1
+            className="absolute top-8 left-0 w-full text-center px-4 "
+            style={{ scale: springScale, originX: 0.5, originY: 0.5 }}
+          >
             Popular Dishes
-          </h3>
+          </motion.h1>
           <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8 items-center">
             {/* Name */}
             <div className="min-w-0 order-2 md:order-1">
@@ -185,18 +198,15 @@ const PopularSecond = () => {
               </div>
             </div>
           </div>
+          <div className="absolute bottom-8 left-0 w-full  px-4 ">
+            <div className="flex flex-row items-center justify-center gap-4 ">
+              <Click content="View Full Menu" fer="/Menu" status={true} />
+              <Click content="Reservations" fer="/" status={false} />
+            </div>
+          </div>
         </div>
       </div>
       {/* Menu */}
-
-      <div
-        className="flex flex-row items-center justify-center gap-4 py-8 md:py-16 px-4 md:px-8 pb-16 md:pb-32"
-        // delay={0.05}
-        // amount={0.15}
-      >
-        <BigClick content="View Full Menu" fer="/Menu" status={true} />
-        <BigClick content="Reservations" fer="/" status={false} />
-      </div>
     </div>
   );
 };
