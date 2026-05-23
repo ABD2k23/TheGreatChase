@@ -201,7 +201,7 @@ const PopularSecond = () => {
           <div className="absolute bottom-8 left-0 w-full  px-4 ">
             <div className="flex flex-row items-center justify-center gap-4 ">
               <Click content="View Full Menu" fer="/Menu" status={true} />
-              <Click content="Reservations" fer="/" status={false} />
+              <Click content="Reservations" fer="/booking" status={false} />
             </div>
           </div>
         </div>

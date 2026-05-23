@@ -55,7 +55,7 @@ const Hero = () => {
             custom={baseDelay + 0.14}
           >
             <Click content="Explore Menu" fer="/Menu" status={true} />
-            <Click content="Reservations" fer="/" status={false} />
+            <Click content="Reservations" fer="/booking" status={false} />
           </motion.div>
         </motion.div>
       </motion.div>
